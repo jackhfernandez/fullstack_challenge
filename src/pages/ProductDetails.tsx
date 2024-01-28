@@ -12,7 +12,14 @@ type ParamsTypes = {
   id: string;
 };
 
-type Product = {};
+type Product = {
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
+  stock: number;
+};
 
 const ProductDetails = () => {
   // en el componente (pagina) `ProductDetails` usa el hook useEfFect para hacer el llamado del producto seleccionado,
@@ -25,7 +32,25 @@ const ProductDetails = () => {
   // **Details**
   // NOTA: debes crear un type para definir los parámetros que vas a recibir del hook useParams
 
-  const [product, setProduct] = useState<Product>({});
+  const [product, setProduct] = useState<Product>({
+    title: "",
+    price: 0,
+    category: "",
+    description: "",
+    image: "",
+    stock: 0,
+  });
+
+  const { id } = useParams<ParamsTypes>();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const result = await fetch(URL + "/" + id);
+      const data = await result.json();
+      setProduct(data);
+    };
+    fetchProducts();
+  }, [id]);
 
   return (
     <>
@@ -37,6 +62,7 @@ const ProductDetails = () => {
         category={product.category}
         description={product.description}
         image={product.image}
+        stock={product.stock}
       />
       <More />
       <Footer />

@@ -7,12 +7,21 @@ import ProductDetails from "./pages/ProductDetails";
 // una ruta dinámica `productDetail/:id` la cual mostrara los detalles del producto seleccionado
 // usando el componente `ProductDetails.tsx`
 
-const router = createBrowserRouter([]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />
+  },
+  {
+    path: "productDetails/:id",
+    element: <ProductDetails />
+  }
+]);
 
 // luego en el componente App retorna el `RouterProvider` que contendrá el router creado con `createBrowserRouter`
 
 function App() {
-  return <Home />;
+  return <RouterProvider router={router} />
 }
 
 export default App;

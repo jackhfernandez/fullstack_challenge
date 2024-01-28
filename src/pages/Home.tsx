@@ -8,7 +8,7 @@ import News from "../components/News/Index";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
-const URL = "http://127.0.0.1:8080/product";
+const URL = "http://localhost:8080/product";
 
 const Home = () => {
   // en el componente (pagina) Home usa el hook useEfFect para hacer el llamado de la data, esto unicamente en el montado del componente
@@ -16,6 +16,17 @@ const Home = () => {
   // tu API debe estar encendida y corriendo localmente ademas de tener algunos productos iniciales para renderizar
   // para almacenar la información llamada en nuestra API usa el hook useState para almacenar en un estado
   // los productos obtenidos y pasarlos al componente `Sellers`
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const result = await fetch(URL);
+      const data = await result.json();
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <>
