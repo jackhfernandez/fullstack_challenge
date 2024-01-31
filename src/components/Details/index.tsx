@@ -1,11 +1,4 @@
-
-// dada la siguiente estructura de JSX agrega los estilos css necesarios para ver los detalles del
-// producto, para que se vea como se presenta en la siguiente imagen
-
-// crear el typo en typescript con la información que se recibirá y renderizara en este componente
-// recuerda que este serán los parámetros de un producto que tiene la estructura que se
-// presento anteriormente, este typo creado utilízalo para definir el type de los parámetros de entrada
-// de este componente.
+import "./Details.css"
 
 type Product = {
   title: string;
@@ -16,7 +9,6 @@ type Product = {
   stock: number;
 };
 const Details = ({ title, price, category, description, image }: Product) => {
-  // por ultimo agrega los valores del producto en el componente `Details`
   return (
     <section>
       <div className="small-container single-product">
@@ -33,9 +25,9 @@ const Details = ({ title, price, category, description, image }: Product) => {
             </p>
             
             <h1 id="title">{title}</h1>
-            <h4 id="price">{price}</h4>
+            <h4 id="price">${price}</h4>
 
-            <input type="number" id="quantity" />
+            <input type="number" placeholder="0" id="quantity" />
             <button className="btn" id="btn">
               Add To Cart
             </button>

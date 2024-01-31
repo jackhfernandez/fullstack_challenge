@@ -1,11 +1,6 @@
 import Card from "../Card";
 import "./Sellers.css";
 
-// crear el typo en typescript con la información que se recibirá y renderizara en este componente
-// recuerda que este sera un arreglo de productos donde los productos tienen la estructura que se
-// presento anteriormente, este typo creado utilízalo para definir el type de los parámetros de entrada
-// de este componente.
-
 type Product = {
   id: number;
   title: string;

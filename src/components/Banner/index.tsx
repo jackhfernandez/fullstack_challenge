@@ -9,7 +9,7 @@ const Banner = () => {
           <img src={home} alt="img " />
         </div>
         <div className="home_txt">
-          <p className="collectio">SUMMER COLLECTION</p>
+          <p className="collection">SUMMER COLLECTION</p>
           <h2>
             FALL - WINTER
             <br />

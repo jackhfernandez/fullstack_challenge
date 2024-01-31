@@ -6,7 +6,7 @@ import Details from "../components/Details";
 import Footer from "../components/Footer";
 import More from "../components/More";
 
-const URL = "http://127.0.0.1:8080/product";
+const URL = "http://127.0.0.1:8081/product";
 
 type ParamsTypes = {
   id: string;
@@ -22,15 +22,7 @@ type Product = {
 };
 
 const ProductDetails = () => {
-  // en el componente (pagina) `ProductDetails` usa el hook useEfFect para hacer el llamado del producto seleccionado,
-  // unicamente en el montado del componente, para esto utiliza el hook `useParams` obtén el id de la ruta y utilízalo
-  // para llamar unicamente los detalles del producto seleccionado
-  //   ```js
-  // GET 127.0.0.1:8080/product/:id;
-  // ```;
-  // luego utiliza el hook useState para guardar la información obtenida del producto y pásala como props al componente
-  // **Details**
-  // NOTA: debes crear un type para definir los parámetros que vas a recibir del hook useParams
+  const { id } = useParams<ParamsTypes>();
 
   const [product, setProduct] = useState<Product>({
     title: "",
@@ -41,8 +33,6 @@ const ProductDetails = () => {
     stock: 0,
   });
 
-  const { id } = useParams<ParamsTypes>();
-
   useEffect(() => {
     const fetchProducts = async () => {
       const result = await fetch(URL + "/" + id);
@@ -50,7 +40,7 @@ const ProductDetails = () => {
       setProduct(data);
     };
     fetchProducts();
-  }, [id]);
+  }, []);
 
   return (
     <>
